@@ -1,0 +1,59 @@
+Library class system:
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Library {
+    ArrayList<String> books = new ArrayList<>();
+
+    void addBook(String book) {
+        books.add(book);
+        System.out.println(book + " added");
+    }
+
+    void removeBook(String book) {
+        if (books.remove(book))
+            System.out.println(book + " removed");
+        else
+            System.out.println(book + " not found");
+    }
+
+    void issueBook(String book) {
+        if (books.contains(book)) {
+            books.remove(book);
+            System.out.println(book + " issued");
+        } else {
+            System.out.println(book + " not available");
+        }
+    }
+
+    void showBooks() {
+        System.out.println("Books in library:");
+        for (String book : books)
+            System.out.println(book);
+    }
+}
+
+public class LibrarySystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Library lib = new Library();
+        while (true) {
+            System.out.println("1.Add 2.Remove 3.Issue 4.Show 5.Exit");
+            int ch = sc.nextInt();
+            sc.nextLine();
+            if (ch == 5) break;
+            if (ch >= 1 && ch <= 3) {
+                System.out.print("Enter book name: ");
+                String book = sc.nextLine();
+                if (ch == 1) lib.addBook(book);
+                else if (ch == 2) lib.removeBook(book);
+                else lib.issueBook(book);
+            } else if (ch == 4) {
+                lib.showBooks();
+            } else {
+                System.out.println("Invalid choice");
+            }
+        }
+    }
+}

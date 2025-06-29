@@ -1,0 +1,22 @@
+HashSet to store a list of unique email addresses:
+
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class UniqueEmails {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        HashSet<String> emails = new HashSet<>();
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter email: ");
+            String email = sc.nextLine();
+            emails.add(email);
+        }
+
+        System.out.println("\nUnique Emails:");
+        for (String email : emails) {
+            System.out.println(email);
+        }
+    }
+}

@@ -1,0 +1,262 @@
+mysql> show tables;
+ERROR 1046 (3D000): No database selected
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| day1               |
+| day2               |
+| fsd_task           |
+| fsd_tasks          |
+| information_schema |
+| library_db         |
+| librarydb          |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| task1              |
+| world              |
++--------------------+
+13 rows in set (1.16 sec)
+
+mysql> use day2;
+Database changed
+mysql> select * from student;
++--------+--------+--------+-------+-------+-------+---------------+------------+
+| rollno | sname  | dept   | mark1 | mark2 | total | course        | course_fee |
++--------+--------+--------+-------+-------+-------+---------------+------------+
+|      1 | anuja  | bsc it |    50 |    40 |    90 | java          |       4000 |
+|      2 | dhaya  | bsc cs |    40 |    40 |    80 | python        |       5000 |
+|      3 | sathya | bsc cs |    30 |    40 |    70 | c++           |       3000 |
+|      4 | kiruba | bsc it |    20 |    40 |    60 | R programming |       5500 |
+|      5 | sona   | bsc it |    60 |    40 |   100 | javascript    |       2500 |
++--------+--------+--------+-------+-------+-------+---------------+------------+
+5 rows in set (0.09 sec)
+
+mysql> insert into student values(6,'janani','bsc ct',30,50,80,'java',4000);
+Query OK, 1 row affected (0.55 sec)
+
+mysql> insert into student values(7,'sanjay','bsc ct',50,40,90,'c',4000);
+Query OK, 1 row affected (3.03 sec)
+
+mysql> insert into student values(8,'kavya','bsc it',30,40,70,'python',5000);
+Query OK, 1 row affected (2.79 sec)
+
+mysql> insert into student values(9,'balu','bsc cs',35,45,80,'python',5000);
+Query OK, 1 row affected (1.09 sec)
+
+mysql> insert into student values(10,'priya','bsc cs',45,30,75,'c++',3000);
+Query OK, 1 row affected (0.33 sec)
+
+mysql> select * from student;
++--------+--------+--------+-------+-------+-------+---------------+------------+
+| rollno | sname  | dept   | mark1 | mark2 | total | course        | course_fee |
++--------+--------+--------+-------+-------+-------+---------------+------------+
+|      1 | anuja  | bsc it |    50 |    40 |    90 | java          |       4000 |
+|      2 | dhaya  | bsc cs |    40 |    40 |    80 | python        |       5000 |
+|      3 | sathya | bsc cs |    30 |    40 |    70 | c++           |       3000 |
+|      4 | kiruba | bsc it |    20 |    40 |    60 | R programming |       5500 |
+|      5 | sona   | bsc it |    60 |    40 |   100 | javascript    |       2500 |
+|      6 | janani | bsc ct |    30 |    50 |    80 | java          |       4000 |
+|      7 | sanjay | bsc ct |    50 |    40 |    90 | c             |       4000 |
+|      8 | kavya  | bsc it |    30 |    40 |    70 | python        |       5000 |
+|      9 | balu   | bsc cs |    35 |    45 |    80 | python        |       5000 |
+|     10 | priya  | bsc cs |    45 |    30 |    75 | c++           |       3000 |
++--------+--------+--------+-------+-------+-------+---------------+------------+
+10 rows in set (0.36 sec)
+
+
+mysql> select course,count(roll no) as number_of_student 
+    -> from student 
+    -> group by course;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no) as number_of_student 
+from student 
+group by course' at line 1
+mysql> select course,count(roll no) as number_of_student 
+    -> from student ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'no) as number_of_student 
+from student' at line 1
+mysql> select course,count(rollno) as number_of_student 
+    -> from student 
+    -> group by course;
++---------------+-------------------+
+| course        | number_of_student |
++---------------+-------------------+
+| java          |                 2 |
+| python        |                 3 |
+| c++           |                 2 |
+| R programming |                 1 |
+| javascript    |                 1 |
+| c             |                 1 |
++---------------+-------------------+
+6 rows in set (0.15 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.36 sec)
+
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select d.dnam
+e,avg(e.sal)
+    -> from emp e join dept d 
+    -> join dept d on e.deptno=d.deptno
+    -> group by d.dname;
+ERROR 1066 (42000): Not unique table/alias: 'd'
+mysql> select s.dname,avg(e.sal)
+    -> join dept s on e.deptno=s.deptno
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'join dept s on e.deptno=s.deptno' at line 2
+mysql> select s.dname,avg(e.sal)
+    -> from emp e join dept s 
+    -> join dept s on e.deptno=s.deptno
+    -> group by s.dname;
+ERROR 1066 (42000): Not unique table/alias: 's'
+mysql> select s.dname,avg(e.sal)
+    -> from emp e join dept d 
+    -> select * from dept;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from dept' at line 3
+mysql> select d.dname, avg(e.sal) as avg_salary
+    -> from emp e join dept d on e.deptno = d.deptno
+    -> group by d.dname;
++------------+-------------+
+| dname      | avg_salary  |
++------------+-------------+
+| RESEARCH   | 2175.000000 |
+| SALES      | 1566.666667 |
+| ACCOUNTING | 2916.666667 |
++------------+-------------+
+3 rows in set (0.03 sec)
+
+mysql> select d.dname, min(e.sal) as miminum salary and max(e.sal) as maximum salary 
+    -> from emp e join dept d on e.deptno = d.deptno
+    -> group by d.dname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'salary and max(e.sal) as maximum salary 
+from emp e join dept d on e.deptno = d.' at line 1
+mysql> select d.dname as department_name,
+    -> max(e.sal) as max_salary,
+    -> min(e.sal) as min_salary from emp e
+    -> join dept d on e.deptno = d.deptno
+    -> group by d.dname;
++-----------------+------------+------------+
+| department_name | max_salary | min_salary |
++-----------------+------------+------------+
+| RESEARCH        |    3000.00 |     800.00 |
+| SALES           |    2850.00 |     950.00 |
+| ACCOUNTING      |    5000.00 |    1300.00 |
++-----------------+------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select concat(ename,sal,sal*3)as 'dream salaries' from emp;
++----------------------+
+| dream salaries       |
++----------------------+
+| SMITH800.002400.00   |
+| ALLEN1600.004800.00  |
+| WARD1250.003750.00   |
+| JONES2975.008925.00  |
+| MARTIN1250.003750.00 |
+| BLAKE2850.008550.00  |
+| CLARK2450.007350.00  |
+| SCOTT3000.009000.00  |
+| KING5000.0015000.00  |
+| TURNER1500.004500.00 |
+| ADAMS1100.003300.00  |
+| JAMES950.002850.00   |
+| FORD3000.009000.00   |
+| MILLER1300.003900.00 |
++----------------------+
+14 rows in set (0.01 sec)
+
+mysql> select concat(ename, ' earns ', sal , ' monthly but wants ' , sal*3)as 'dream salaries' from emp;  
++------------------------------------------------+
+| dream salaries                                 |
++------------------------------------------------+
+| SMITH earns 800.00 monthly but wants 2400.00   |
+| ALLEN earns 1600.00 monthly but wants 4800.00  |
+| WARD earns 1250.00 monthly but wants 3750.00   |
+| JONES earns 2975.00 monthly but wants 8925.00  |
+| MARTIN earns 1250.00 monthly but wants 3750.00 |
+| BLAKE earns 2850.00 monthly but wants 8550.00  |
+| CLARK earns 2450.00 monthly but wants 7350.00  |
+| SCOTT earns 3000.00 monthly but wants 9000.00  |
+| KING earns 5000.00 monthly but wants 15000.00  |
+| TURNER earns 1500.00 monthly but wants 4500.00 |
+| ADAMS earns 1100.00 monthly but wants 3300.00  |
+| JAMES earns 950.00 monthly but wants 2850.00   |
+| FORD earns 3000.00 monthly but wants 9000.00   |
+| MILLER earns 1300.00 monthly but wants 3900.00 |
++------------------------------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select d.dname,sum(e.sal) from emp e
+    -> join dept d on e.deptno = d.deptno
+    -> group by e.deptno
+    -> having total_salary > 5000;
+ERROR 1054 (42S22): Unknown column 'total_salary' in 'having clause'
+mysql> select d.dname,sum(e.sal) from emp e
+    -> join dept d on e.deptno = d.deptno
+    -> group by e.deptno
+    -> having sal>5000;
+ERROR 1054 (42S22): Unknown column 'sal' in 'having clause'
+mysql> select d.dname, sum(e.sal) as total_salary
+-> from emp e join dept d on e.deptno = d.deptno
+-> group by d.dname
+-> having sum(e.sal)>5000);
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your
+ syntax to use near ')' at line 4
+
+mysql> select d.dname,sum(e.sal) as total_salary
+    -> from emp e join dept d on e.deptno = d.deptno
+    -> group by d.dname
+    -> having sum(e.sal)>5000;
++------------+--------------+
+| dname      | total_salary |
++------------+--------------+
+| RESEARCH   |     10875.00 |
+| SALES      |      9400.00 |
+| ACCOUNTING |      8750.00 |
++------------+--------------+
+
+
+mysql> notee;
+
+Outfile disabled.
+
+mysql> |
+
+	
+
+
+
+
+
+

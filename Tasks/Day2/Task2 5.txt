@@ -1,0 +1,28 @@
+ Mini address book:
+
+
+import java.util.Scanner;
+
+public class MiniAddressBook {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String[] names = new String[5];
+        String[] phones = new String[5];
+        String[] emails = new String[5];
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Enter details for contact " + (i + 1));
+            System.out.print("Name: ");
+            names[i] = sc.nextLine();
+            System.out.print("Phone: ");
+            phones[i] = sc.nextLine();
+            System.out.print("Email: ");
+            emails[i] = sc.nextLine();
+        }
+
+        System.out.println("\nAddress Book:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println((i + 1) + ". " + names[i] + " | " + phones[i] + " | " + emails[i]);
+        }
+    }
+}

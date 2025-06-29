@@ -1,0 +1,41 @@
+ ArrayList of students:
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int roll;
+
+    Student(String name, int roll) {
+        this.name = name;
+        this.roll = roll;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Roll: " + roll);
+    }
+}
+
+public class StudentList {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Student> list = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter name: ");
+            String name = sc.nextLine();
+            System.out.print("Enter roll: ");
+            int roll = sc.nextInt();
+            sc.nextLine();
+            list.add(new Student(name, roll));
+        }
+
+        System.out.println("\nStudent List:");
+        Iterator<Student> it = list.iterator();
+        while (it.hasNext()) {
+            it.next().display();
+        }
+    }
+}

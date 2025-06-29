@@ -1,0 +1,23 @@
+String analyser:
+
+import java.util.Scanner;
+
+public class StringAnalyzer {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String str = sc.nextLine();
+        String[] words = str.split(" ");
+        int wordCount = words.length;
+        int charCount = str.replace(" ", "").length();
+        String reverse = new StringBuilder(str).reverse().toString();
+        String longest = "";
+        for (String word : words) {
+            if (word.length() > longest.length()) longest = word;
+        }
+        System.out.println("Words: " + wordCount);
+        System.out.println("Characters: " + charCount);
+        System.out.println("Reversed: " + reverse);
+        System.out.println("Longest word: " + longest);
+    }
+}

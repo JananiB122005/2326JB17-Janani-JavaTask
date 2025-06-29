@@ -1,0 +1,26 @@
+ Result processing :
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ResultProcessing {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("marks.txt"));
+             BufferedWriter bw = new BufferedWriter(new FileWriter("result.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                String name = parts[0];
+                int marks = Integer.parseInt(parts[1]);
+                String result = marks >= 50 ? "Pass" : "Fail";
+                bw.write(name + ": " + result);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}

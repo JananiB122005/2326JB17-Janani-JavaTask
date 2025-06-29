@@ -1,0 +1,22 @@
+  Delay thread output
+
+class SleepDemo extends Thread {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(getName() + " - Count: " + i);
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        SleepDemo t1 = new SleepDemo();
+        SleepDemo t2 = new SleepDemo();
+        t1.start();
+        t2.start();
+    }
+}
+

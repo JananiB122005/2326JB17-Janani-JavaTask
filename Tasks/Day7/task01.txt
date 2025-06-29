@@ -1,0 +1,501 @@
+mysql> create database FSD_task;
+Query OK, 1 row affected (0.66 sec)
+
+mysql> use FSD_task;
+Database changed
+mysql> create table student(
+    -> rollno int primary key,
+    -> sname varchar(25) not null,
+    -> email varchar(30) not null, 
+    -> department varchar(20) not null);
+Query OK, 0 rows affected (6.11 sec)
+
+mysql> create table course(
+    -> cid int primary key,
+    -> course_name varchar(30) not null,
+    -> cfee int not null,
+    -> course_faculty varchar(30) not null);
+Query OK, 0 rows affected (2.79 sec)
+
+mysql> insert into student values(101,'jana','jana123@gmail.com','BCA');
+Query OK, 1 row affected (1.86 sec)
+
+mysql> insert into student values(102,'gokul','gokul321@gmail.com','BSc IT');
+Query OK, 1 row affected (1.23 sec)
+
+mysql> insert into student values(103,'priya','mepri@gmail.com','BSc CS');
+Query OK, 1 row affected (1.22 sec)
+
+mysql> insert into student values(104,'amutha','23amudha@gmail.com','BSc CT');
+Query OK, 1 row affected (1.44 sec)
+
+mysql> insert into student values(105,'kirubavathy','kirubavathy45@gmail.com','BSc DA');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into course values(211,'java','20000','jayanthi');
+Query OK, 1 row affected (0.19 sec)
+
+mysql> insert into course values(222,'python','35000','kavya');
+Query OK, 1 row affected (1.25 sec)
+
+mysql> insert into course values(233,'fullstack','40000','nandhini');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into course values(244,'data structure','25000','keerthika');
+Query OK, 1 row affected (0.39 sec)
+
+mysql> insert into course values(255,'web development','30000','deiva kumar');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from student;
++--------+-------------+-------------------------+------------+
+| rollno | sname       | email                   | department |
++--------+-------------+-------------------------+------------+
+|    101 | jana        | jana123@gmail.com       | BCA        |
+|    102 | gokul       | gokul321@gmail.com      | BSc IT     |
+|    103 | priya       | mepri@gmail.com         | BSc CS     |
+|    104 | amutha      | 23amudha@gmail.com      | BSc CT     |
+|    105 | kirubavathy | kirubavathy45@gmail.com | BSc DA     |
++--------+-------------+-------------------------+------------+
+5 rows in set (0.22 sec)
+
+mysql> select * from course;
++-----+-----------------+-------+----------------+
+| cid | course_name     | cfee  | course_faculty |
++-----+-----------------+-------+----------------+
+| 211 | java            | 20000 | jayanthi       |
+| 222 | python          | 35000 | kavya          |
+| 233 | fullstack       | 40000 | nandhini       |
+| 244 | data structure  | 25000 | keerthika      |
+| 255 | web development | 30000 | deiva kumar    |
++-----+-----------------+-------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> update course set cfee=increase by 12%;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by 12%' at line 1
+mysql> update course set cfee=cfee*1.12;
+Query OK, 5 rows affected (18.78 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from course;
++-----+-----------------+-------+----------------+
+| cid | course_name     | cfee  | course_faculty |
++-----+-----------------+-------+----------------+
+| 211 | java            | 22400 | jayanthi       |
+| 222 | python          | 39200 | kavya          |
+| 233 | fullstack       | 44800 | nandhini       |
+| 244 | data structure  | 28000 | keerthika      |
+| 255 | web development | 33600 | deiva kumar    |
++-----+-----------------+-------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> create database libraryDB;
+Query OK, 1 row affected (0.25 sec)
+
+mysql> use libraryDB;
+Database changed
+mysql> notee;
+
+
+mysql> create database library_db;
+Query OK, 1 row affected (0.88 sec)
+
+mysql> use library_db;
+Database changed(1.22)
+
+mysql> create table books(
+    -> bookid int primary key,
+    -> book_name varchar(30) not null,
+    -> author varchar(50) not null,
+    -> genre varchar(50) not null,
+    -> published_year int not null);
+Query OK, 0 rows affected (2.07 sec)
+
+mysql> create table members(
+    -> memberid int primary key,
+    -> name varchar(40) not null,
+    -> email varchar(50) not null,
+    -> phone_number int );
+Query OK, 0 rows affected (3.11 sec)
+
+mysql> create table student_records(
+    -> sid int primary key,
+    -> sname varchar(50),
+    -> create table student_records(;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create table student_records(' at line 4
+mysql> create table student_records(
+    -> sid int primary key,
+    -> sname varchar(50) not null,
+    -> bookid int,
+    -> book_name varchar(50) not null,
+    -> entry_date date not null); 
+Query OK, 0 rows affected (1.45 sec)
+
+mysql> desc books;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| bookid         | int         | NO   | PRI | NULL    |       |
+| book_name      | varchar(30) | NO   |     | NULL    |       |
+| author         | varchar(50) | NO   |     | NULL    |       |
+| genre          | varchar(50) | NO   |     | NULL    |       |
+| published_year | int         | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (1.82 sec)
+
+mysql> insert into books values(2290,'India of my dreams','mahatma gandhi','patriotic',1967);
+Query OK, 1 row affected (1.41 sec)
+
+mysql> insert into books values(2580,'to kill a mockingbird','harper lee','classic',2000);
+Query OK, 1 row affected (0.41 sec)
+
+mysql> insert into books values(2690,'the hobbit','tolkien','fantasy',1984);
+Query OK, 1 row affected (3.62 sec)
+
+mysql> insert into books values(5678,'the road','cormac','literary',2012);
+Query OK, 1 row affected (3.33 sec)
+
+mysql> insert into books values(4321,'gone girl','gillian flynn','phychologigal',2005);
+Query OK, 1 row affected (2.83 sec)
+
+mysql> desc members;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| memberid     | int         | NO   | PRI | NULL    |       |
+| name         | varchar(40) | NO   |     | NULL    |       |
+| email        | varchar(50) | NO   |     | NULL    |       |
+| phone_number | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into members values(301,'vincent','vincent@123gmail.com',9003956710);
+ERROR 1264 (22003): Out of range value for column 'phone_number' at row 1
+mysql> alter table members modify column phone_number varchar(15);
+Query OK, 0 rows affected (5.41 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc members;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| memberid     | int         | NO   | PRI | NULL    |       |
+| name         | varchar(40) | NO   |     | NULL    |       |
+| email        | varchar(50) | NO   |     | NULL    |       |
+| phone_number | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into members values(301,'vincent','vincent@123gmail.com',9003956710);
+Query OK, 1 row affected (0.39 sec)
+
+mysql> insert into members values(303,'babu','babu321@gmail.com',9363221907);
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into members values(308,'dinesh','619dinesh@gmail.com',9500672690);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into members values(403,'priya','priyabc@gmail.com',8668140050);
+Query OK, 1 row affected (0.95 sec)
+
+mysql> insert into members values(504,'vidhya','vidhya28@gmail.com',9363210804);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> desc student_records;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| sid        | int         | NO   | PRI | NULL    |       |
+| sname      | varchar(50) | NO   |     | NULL    |       |
+| bookid     | int         | YES  |     | NULL    |       |
+| book_name  | varchar(50) | NO   |     | NULL    |       |
+
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student_records values(31,'dhanya','506','pride','23-06-2025');
+ERROR 1292 (22007): Incorrect date value: '23-06-2025' for column 'entry_date' at row 1
+mysql> insert into student_records values(31,'dhanya','506','pride','2025-06-13');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into student_records values(44,'shanmathi','609','clean code','2025-05-28');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into student_records values(51,'sweatha','899','lean startup','2025-06-23');
+Query OK, 1 row affected (1.93 sec)
+
+mysql> insert into student_records values(23,'mythily','765','the great gatsby','2025-06-20');
+Query OK, 1 row affected (0.67 sec)
+
+mysql> insert into student_records values(33,'preethi','456','atomic ','2025-06-12');
+Query OK, 1 row affected (0.77 sec)
+
+mysql> select * from books;
++--------+-----------------------+----------------+---------------+----------------+
+| bookid | book_name             | author         | genre         | published_year |
++--------+-----------------------+----------------+---------------+----------------+
+|   2290 | India of my dreams    | mahatma gandhi | patriotic     |           1967 |
+|   2580 | to kill a mockingbird | harper lee     | classic       |           2000 |
+|   2690 | the hobbit            | tolkien        | fantasy       |           1984 |
+|   4321 | gone girl             | gillian flynn  | phychologigal |           2005 |
+|   5678 | the road              | cormac         | literary      |           2012 |
++--------+-----------------------+----------------+---------------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from members;
++----------+---------+----------------------+--------------+
+| memberid | name    | email                | phone_number |
++----------+---------+----------------------+--------------+
+|      301 | vincent | vincent@123gmail.com | 9003956710   |
+|      303 | babu    | babu321@gmail.com    | 9363221907   |
+|      308 | dinesh  | 619dinesh@gmail.com  | 9500672690   |
+|      403 | priya   | priyabc@gmail.com    | 8668140050   |
+|      504 | vidhya  | vidhya28@gmail.com   | 9363210804   |
++----------+---------+----------------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student_records;
++-----+-----------+--------+------------------+------------+
+| sid | sname     | bookid | book_name        | entry_date |
++-----+-----------+--------+------------------+------------+
+|  23 | mythily   |    765 | the great gatsby | 2025-06-20 |
+|  31 | dhanya    |    506 | pride            | 2025-06-13 |
+|  33 | preethi   |    456 | atomic           | 2025-06-12 |
+|  44 | shanmathi |    609 | clean code       | 2025-05-28 |
+|  51 | sweatha   |    899 | lean startup     | 2025-06-23 |
++-----+-----------+--------+------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
+
+
+mysql> create database library_db;
+Query OK, 1 row affected (0.88 sec)
+
+mysql> use library_db;
+Database changed(1.22)
+
+mysql> create table books(
+    -> bookid int primary key,
+    -> book_name varchar(30) not null,
+    -> author varchar(50) not null,
+    -> genre varchar(50) not null,
+    -> published_year int not null);
+Query OK, 0 rows affected (2.07 sec)
+
+mysql> create table members(
+    -> memberid int primary key,
+    -> name varchar(40) not null,
+    -> email varchar(50) not null,
+    -> phone_number int );
+Query OK, 0 rows affected (3.11 sec)
+
+mysql> create table student_records(
+    -> sid int primary key,
+    -> sname varchar(50),
+    -> create table student_records(;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create table student_records(' at line 4
+mysql> create table student_records(
+    -> sid int primary key,
+    -> sname varchar(50) not null,
+    -> bookid int,
+    -> book_name varchar(50) not null,
+    -> entry_date date not null); 
+Query OK, 0 rows affected (1.45 sec)
+
+mysql> desc books;
++----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| bookid         | int         | NO   | PRI | NULL    |       |
+| book_name      | varchar(30) | NO   |     | NULL    |       |
+| author         | varchar(50) | NO   |     | NULL    |       |
+| genre          | varchar(50) | NO   |     | NULL    |       |
+| published_year | int         | NO   |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (1.82 sec)
+
+mysql> insert into books values(2290,'India of my dreams','mahatma gandhi','patriotic',1967);
+Query OK, 1 row affected (1.41 sec)
+
+mysql> insert into books values(2580,'to kill a mockingbird','harper lee','classic',2000);
+Query OK, 1 row affected (0.41 sec)
+
+mysql> insert into books values(2690,'the hobbit','tolkien','fantasy',1984);
+Query OK, 1 row affected (3.62 sec)
+
+mysql> insert into books values(5678,'the road','cormac','literary',2012);
+Query OK, 1 row affected (3.33 sec)
+
+mysql> insert into books values(4321,'gone girl','gillian flynn','phychologigal',2005);
+Query OK, 1 row affected (2.83 sec)
+
+mysql> desc members;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| memberid     | int         | NO   | PRI | NULL    |       |
+| name         | varchar(40) | NO   |     | NULL    |       |
+| email        | varchar(50) | NO   |     | NULL    |       |
+| phone_number | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into members values(301,'vincent','vincent@123gmail.com',9003956710);
+ERROR 1264 (22003): Out of range value for column 'phone_number' at row 1
+mysql> alter table members modify column phone_number varchar(15);
+Query OK, 0 rows affected (5.41 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc members;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| memberid     | int         | NO   | PRI | NULL    |       |
+| name         | varchar(40) | NO   |     | NULL    |       |
+| email        | varchar(50) | NO   |     | NULL    |       |
+| phone_number | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into members values(301,'vincent','vincent@123gmail.com',9003956710);
+Query OK, 1 row affected (0.39 sec)
+
+mysql> insert into members values(303,'babu','babu321@gmail.com',9363221907);
+Query OK, 1 row affected (0.25 sec)
+
+mysql> insert into members values(308,'dinesh','619dinesh@gmail.com',9500672690);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into members values(403,'priya','priyabc@gmail.com',8668140050);
+Query OK, 1 row affected (0.95 sec)
+
+mysql> insert into members values(504,'vidhya','vidhya28@gmail.com',9363210804);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> desc student_records;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| sid        | int         | NO   | PRI | NULL    |       |
+| sname      | varchar(50) | NO   |     | NULL    |       |
+| bookid     | int         | YES  |     | NULL    |       |
+| book_name  | varchar(50) | NO   |     | NULL    |       |
+
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> insert into student_records values(31,'dhanya','506','pride','23-06-2025');
+ERROR 1292 (22007): Incorrect date value: '23-06-2025' for column 'entry_date' at row 1
+mysql> insert into student_records values(31,'dhanya','506','pride','2025-06-13');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into student_records values(44,'shanmathi','609','clean code','2025-05-28');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into student_records values(51,'sweatha','899','lean startup','2025-06-23');
+Query OK, 1 row affected (1.93 sec)
+
+mysql> insert into student_records values(23,'mythily','765','the great gatsby','2025-06-20');
+Query OK, 1 row affected (0.67 sec)
+
+mysql> insert into student_records values(33,'preethi','456','atomic ','2025-06-12');
+Query OK, 1 row affected (0.77 sec)
+
+mysql> select * from books;
++--------+-----------------------+----------------+---------------+----------------+
+| bookid | book_name             | author         | genre         | published_year |
++--------+-----------------------+----------------+---------------+----------------+
+|   2290 | India of my dreams    | mahatma gandhi | patriotic     |           1967 |
+|   2580 | to kill a mockingbird | harper lee     | classic       |           2000 |
+|   2690 | the hobbit            | tolkien        | fantasy       |           1984 |
+|   4321 | gone girl             | gillian flynn  | phychologigal |           2005 |
+|   5678 | the road              | cormac         | literary      |           2012 |
++--------+-----------------------+----------------+---------------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> select * from members;
++----------+---------+----------------------+--------------+
+| memberid | name    | email                | phone_number |
++----------+---------+----------------------+--------------+
+|      301 | vincent | vincent@123gmail.com | 9003956710   |
+|      303 | babu    | babu321@gmail.com    | 9363221907   |
+|      308 | dinesh  | 619dinesh@gmail.com  | 9500672690   |
+|      403 | priya   | priyabc@gmail.com    | 8668140050   |
+|      504 | vidhya  | vidhya28@gmail.com   | 9363210804   |
++----------+---------+----------------------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from student_records;
++-----+-----------+--------+------------------+------------+
+| sid | sname     | bookid | book_name        | entry_date |
++-----+-----------+--------+------------------+------------+
+|  23 | mythily   |    765 | the great gatsby | 2025-06-20 |
+|  31 | dhanya    |    506 | pride            | 2025-06-13 |
+|  33 | preethi   |    456 | atomic           | 2025-06-12 |
+|  44 | shanmathi |    609 | clean code       | 2025-05-28 |
+|  51 | sweatha   |    899 | lean startup     | 2025-06-23 |
++-----+-----------+--------+------------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
+
+
+
+
+
+
+mysql> show tables ;
++-----------------+
+| Tables_in_task1 |
++-----------------+
+| department      |
+| employee        |
++-----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee;
++--------+----------+------------------+----------+---------+
+| emp_id | ename    | job              | salary   | dept_id |
++--------+----------+------------------+----------+---------+
+|      1 | Amudha   | clerk            | 10000.00 |     101 |
+|      2 | Janani   | salesman         | 20000.00 |     202 |
+|      3 | Vincent  | manager          | 35000.00 |     303 |
+|      4 | Santhosh | Accountant       | 30000.00 |     101 |
+|      5 | Dinesh   | Assisant manager | 33000.00 |     303 |
++--------+----------+------------------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> desc employee;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| emp_id  | int          | NO   | PRI | NULL    |       |
+| ename   | varchar(30)  | NO   |     | NULL    |       |
+| job     | varchar(50)  | YES  |     | NULL    |       |
+| salary  | decimal(7,2) | YES  |     | NULL    |       |
+| dept_id | int          | YES  |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+5 rows in set (0.18 sec)
+
+mysql> desc department;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| dept_id   | int         | NO   | PRI | NULL    |       |
+| dept_name | varchar(30) | NO   |     | NULL    |       |
+| loc       | varchar(30) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from department;
++---------+------------+----------+
+| dept_id | dept_name  | loc      |
++---------+------------+----------+
+|     101 | accounting | chennai  |
+|     201 | operations | delhi    |
+|     301 | sales      | mumbai   |
+|     401 | research   | banglore |
++---------+------------+----------+
+4 rows in set (0.00 sec)
+

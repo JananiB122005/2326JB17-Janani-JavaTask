@@ -1,0 +1,33 @@
+Simple calculator:
+
+import java.util.Scanner;
+
+public class SimpleCalculator {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int ch;
+        double a, b;
+
+        while (true) {
+            System.out.println("1.Add  2.Sub  3.Mul  4.Div  5.Exit");
+            ch = sc.nextInt();
+
+            if (ch == 5) break;
+
+            System.out.print("Enter two numbers: ");
+            a = sc.nextDouble();
+            b = sc.nextDouble();
+
+            if (ch == 1)
+                System.out.println("Result: " + (a + b));
+            else if (ch == 2)
+                System.out.println("Result: " + (a - b));
+            else if (ch == 3)
+                System.out.println("Result: " + (a * b));
+            else if (ch == 4)
+                System.out.println(b != 0 ? "Result: " + (a / b) : "Cannot divide by zero");
+            else
+                System.out.println("Invalid choice");
+        }
+    }
+}
